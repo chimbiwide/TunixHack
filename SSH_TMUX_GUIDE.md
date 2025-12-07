@@ -89,38 +89,24 @@ Enter your password for the server machine.
 
 ---
 
-### Optional: SSH Key Authentication (No Password Required)
+### Recommended: Easy Access Setup (SSH Config + Key Authentication)
 
-**On the Client Machine:**
+**These are optional but highly recommended for convenience. They work independently but are best used together.**
 
-**1. Generate SSH Key Pair**
-```bash
-ssh-keygen -t ed25519 -C "your_email@example.com"
-```
-Press Enter to accept default location, optionally set a passphrase.
-
-**2. Copy Public Key to Server**
-```bash
-ssh-copy-id username@192.168.x.x
-```
-Enter your password one last time.
-
-**3. Test Password-less Login**
-```bash
-ssh username@192.168.x.x
-```
-You should connect without entering a password!
+**All steps below are done on the CLIENT machine (your other laptop).**
 
 ---
 
-### Optional: SSH Config Shortcut
+#### Step 1: Create SSH Config Shortcut
 
-Create/edit `~/.ssh/config`:
+This allows you to use a simple name instead of typing username and IP every time.
+
+**1. Create/edit SSH config file:**
 ```bash
 nano ~/.ssh/config
 ```
 
-Add this configuration:
+**2. Add this configuration:**
 ```
 Host generation-pc
     HostName 192.168.x.x
@@ -128,10 +114,53 @@ Host generation-pc
     Port 22
 ```
 
-Now you can connect with just:
+Replace `192.168.x.x` with your server's IP and `username` with your server username.
+
+**3. Save and exit** (Ctrl+O, Enter, Ctrl+X)
+
+**4. Test the shortcut:**
 ```bash
 ssh generation-pc
 ```
+You'll still need to enter your password (we'll fix that next).
+
+---
+
+#### Step 2: Set Up SSH Key Authentication (No Password Required)
+
+This eliminates the need to type your password every time.
+
+**1. Generate SSH Key Pair:**
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+- Press Enter to accept default location (`~/.ssh/id_ed25519`)
+- Optionally set a passphrase (or press Enter for no passphrase)
+
+**2. Copy Your Public Key to Server:**
+```bash
+# Using the shortcut name from Step 1!
+ssh-copy-id generation-pc
+```
+Enter your server password one last time.
+
+**3. Test Password-less Login:**
+```bash
+ssh generation-pc
+```
+You should connect immediately without entering a password!
+
+---
+
+#### What You Just Gained:
+
+✅ **Before:** `ssh username@192.168.x.x` + enter password
+✅ **After:** `ssh generation-pc` + instant access
+
+**Note:** These steps are independent:
+- SSH Config alone = shorter command, still need password
+- SSH Keys alone = no password, but long command
+- Both together = short command + no password (recommended!)
 
 ---
 
@@ -219,6 +248,10 @@ All tmux commands start with the prefix: `Ctrl+B`
 
 **1. SSH into the server**
 ```bash
+# If you set up the shortcut:
+ssh generation-pc
+
+# Otherwise:
 ssh username@192.168.x.x
 ```
 
@@ -249,6 +282,10 @@ Your process continues running!
 
 **1. SSH into the server**
 ```bash
+# If you set up the shortcut:
+ssh generation-pc
+
+# Otherwise:
 ssh username@192.168.x.x
 ```
 
@@ -422,7 +459,8 @@ tmux attach -t name -d
 - [ ] Start and enable SSH service
 - [ ] Get IP address of generation machine
 - [ ] Test SSH connection from other laptop
-- [ ] Set up SSH key authentication (optional)
+- [ ] Set up SSH config shortcut on client (recommended)
+- [ ] Set up SSH key authentication on client (recommended)
 - [ ] Install tmux on generation machine
 
 ### Every Time You Start a Process
