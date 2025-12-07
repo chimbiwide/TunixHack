@@ -7,6 +7,7 @@ from prompts import PROMPTS
 def process_file(filename: str):
     data = []
     categories = []
+    prompts = []
     with open(filename, 'r') as f:
         for line in f:
             line = line.strip()
@@ -14,7 +15,8 @@ def process_file(filename: str):
             current_sys_prompt = create_system_prompt(currentLine)
             data.append(current_sys_prompt)
             categories.append(currentLine.get("category"))
-    return data, categories
+            prompts.append(currentLine.get("instruction"))
+    return data, categories, prompts
 
 def create_system_prompt(currentLine):
     prompt = currentLine.get("instruction")
@@ -50,17 +52,17 @@ def generate_responses(data:list[str]):
 def replace_thinking(response:str):
     return re.sub(r'<think>.*?</think>', '', response, flags=re.DOTALL)
 
-def write_csv(prompt:list[str], response:list[str], categories:list[str], outputfilename:str):
+def write_csv(gen_prompt:list[str], response:list[str], categories:list[str], prompts:list[str], outputfilename:str):
     with open(outputfilename, 'w', newline='')  as f:
         writer = csv.writer(f)
-        header = ["Prompt", "Model_Response", "Categories"]
+        header = ["Generation Prompt", "Prompt", "Model_Response", "Categories"]
         writer.writerow(header)
-        writer.writerows(zip(prompt, response, categories))
+        writer.writerows(zip(gen_prompt, prompts, response, categories))
 
 def main():
-    data, categories = process_file("databricks.jsonl")
+    data, categories, prompts = process_file("databricks.jsonl")
     responses = generate_responses(data)
-    write_csv(data, responses, categories,  "databricks_with_reason.csv")
+    write_csv(data, responses, categories, prompts, "databricks_with_reason.csv")
 
 if __name__ == "__main__":
     main()
