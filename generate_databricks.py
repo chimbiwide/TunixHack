@@ -6,13 +6,15 @@ from prompts import PROMPTS
 
 def process_file(filename: str):
     data = []
+    categories = []
     with open(filename, 'r') as f:
         for line in f:
             line = line.strip()
             currentLine = json.loads(line)
             current_sys_prompt = create_system_prompt(currentLine)
             data.append(current_sys_prompt)
-    return data
+            categories.append(currentLine.get("category"))
+    return data, categories
 
 def create_system_prompt(currentLine):
     prompt = currentLine.get("instruction")
@@ -48,17 +50,17 @@ def generate_responses(data:list[str]):
 def replace_thinking(response:str):
     return re.sub(r'<think>.*?</think>', '', response, flags=re.DOTALL)
 
-def write_csv(prompt:list[str], response:list[str], outputfilename:str):
+def write_csv(prompt:list[str], response:list[str], categories:list[str], outputfilename:str):
     with open(outputfilename, 'w', newline='')  as f:
         writer = csv.writer(f)
-        header = ["Prompt", "Model_Response"]
+        header = ["Prompt", "Model_Response", "Categories"]
         writer.writerow(header)
-        writer.writerows(zip(prompt, response))
+        writer.writerows(zip(prompt, response, categories))
 
 def main():
-    data = process_file("databricks.jsonl")
+    data, categories = process_file("databricks.jsonl")
     responses = generate_responses(data)
-    write_csv(data, responses, "databricks_with_reason.csv")
+    write_csv(data, responses, categories,  "databricks_with_reason.csv")
 
 if __name__ == "__main__":
     main()
