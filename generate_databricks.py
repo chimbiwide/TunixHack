@@ -42,14 +42,21 @@ def generate_responses(data:list[str]):
     model = lms.llm("qwen3-14b")
     data_length = len(data)
     llm_response = []
+    error_log = []
     start_time = time.time()
     for i, prompt in enumerate(data,1):
-       response = replace_thinking(model.respond(prompt).content).strip()
-       print_status(start_time, i, data_length)
-       llm_response.append(response)
-
+        try:
+           response = replace_thinking(model.respond(prompt).content).strip()
+           print_status(start_time, i, data_length)
+           llm_response.append(response)
+        except Exception as e:
+            error_msg = f"Index {i + 1}, Prompt: {prompt[:50]}..., Error: {str(e)}"
+            error_log.append(error_msg)
+            print(f"\nError on {i}/{data_length}: {e}")
+            llm_response.append("")
     total_time = time.time() - start_time
     print(f"\n\n\n Total Generation Time: {total_time/60:.2f} minutes")
+    write_log(error_log)
     return llm_response
 
 def print_status(start_time, i, data_length):
@@ -68,6 +75,12 @@ def print_status(start_time, i, data_length):
 
 def replace_thinking(response:str):
     return re.sub(r'<think>.*?</think>', '', response, flags=re.DOTALL)
+
+def write_log(error_log):
+    if error_log:
+        with open("generation_errors.log", 'w') as f:
+            f.write("\n".join(error_log))
+        print(f"Logged {len(error_log)} errors to generation_errors.log")
 
 def write_csv(gen_prompt:list[str], response:list[str], categories:list[str], prompts:list[str], outputfilename:str):
     with open(outputfilename, 'w', newline='')  as f:
