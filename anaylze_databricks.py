@@ -1,7 +1,7 @@
 import csv
 from transformers import AutoTokenizer
 
-tokenizer = AutoTokenizer.from_pretrained("google/gemma-3-1b-it")
+tokenizer = AutoTokenizer.from_pretrained("unsloth/gemma-3-1b-it")
 
 def count_categories(filename:str):
     categories = {
