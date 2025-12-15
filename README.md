@@ -1,3 +1,6 @@
+[creative essay prompt](https://huggingface.co/datasets/sam-paech/essays-creative-writing-prompts)
+
+
 # databricks-thinking
 
 Created by extracing the questions from the [databricks-dolly] dataset and using Qwen3-14b to synthetically generate reasoning traces and answers.
