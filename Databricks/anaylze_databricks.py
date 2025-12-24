@@ -70,9 +70,6 @@ def write_categories(categories: dict, output:str):
 def main():
     cat_count = count_categories("databricks_with_reason.csv")
     print(cat_count)
-    write_categories(cat_count, "categories_count.csv")
 
 if __name__ == "__main__":
-    print(count_tokens("""
-
-    """))
+    main()
