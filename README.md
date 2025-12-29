@@ -1,12 +1,3 @@
-Checklist:
-
-- [x] [creative essay prompt](https://huggingface.co/datasets/sam-paech/essays-creative-writing-prompts)
-- [x] [Basic Science QA](https://huggingface.co/datasets/allenai/sciq)
-- [ ] [Brainstorming](https://huggingface.co/datasets/Wanfq/Explore_Instruct_Brainstorming_10k)
-- [x] [Math](https://huggingface.co/datasets/openai/gsm8k)
-- [ ] [Rewriting](https://huggingface.co/datasets/Wanfq/Explore_Instruct_Rewriting_10k/viewer/default/train?views%5B%5D=train&row=14)
-- [ ] [Code](https://huggingface.co/datasets/Muennighoff/mbpp)
-
 # TunixHack
 
 Code for [chimbiwide](https://huggingface.co/chimbiwide) and [KeeganC](https://huggingface.co/KeeganC)'s [Google Tunix Hack](https://www.kaggle.com/competitions/google-tunix-hackathon/overview) hackathon submission.
