@@ -17,7 +17,7 @@ def count_categories(filename:str):
     with open(filename, 'r', newline='') as f:
         reader = csv.DictReader(f)
         for row in reader:
-            categories[row["Categories"]] += 1
+            categories[row["categories"]] += 1
 
     return categories
 
@@ -68,8 +68,8 @@ def write_categories(categories: dict, output:str):
 
 
 def main():
-    cat_count = count_categories("databricks_with_reason.csv")
-    print(cat_count)
+    cat_count = count_categories("./Databricks/databricks-reasoning.csv")
+    write_categories(cat_count, "./Databricks/Categories_count.csv")
 
 if __name__ == "__main__":
     main()

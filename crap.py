@@ -11,5 +11,3 @@ def llm_instance(prompt:str):
         chat.add_user_message(prompt)
         result = model.respond(chat)
     return result
-
-
