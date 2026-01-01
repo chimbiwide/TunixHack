@@ -54,10 +54,10 @@ def write_csv(generation_prompt:list[str], prompt:list[str],response:list[str], 
     print("Wrote file")
 
 def main():
-    question = read_csv("./brainstorming/brainstorming-2k.csv")
+    question = read_csv("./brainstorming/brainstorming1k.csv")
     generation_prompt = create_prompt(question)
     llm_response = generate_thinking(generation_prompt)
-    write_csv(generation_prompt, question, llm_response, "./brainstorming/brainstorming-thinking.csv")
+    write_csv(generation_prompt, question, llm_response, "./brainstorming/brainstorming-thinking-1k.csv")
 
 if __name__ == "__main__":
     main()
