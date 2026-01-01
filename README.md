@@ -14,35 +14,6 @@ The collection of datasets can be found on [HuggingFace](https://huggingface.co/
 
 ---
 
-### Structure
-
-```
-  TunixHack/
-  ├── brainstorming/            
-  │   └── generate.py
-  ├── code/                       
-  │   └── generate.py
-  ├── crap.py                     // Shared utilities (tried to use that, but copying and pasting is easier)
-  ├── CreativeWriting/           
-  │   ├── generate.py
-  │   ├── prompts.py
-  ├── Databricks/                 
-  │   ├── anaylze_databricks.py
-  │   ├── generate_databricks.py
-  │   ├── rework_databricks.py
-  │   └── test.py
-  ├── gsm8k/                      
-  │   ├── generate.py
-  ├── pyproject.toml      
-  ├── README.md
-  ├── SciQA/                  
-  │   ├── generate.py
-```
-
-Each folder corresponds to one dataset, and it always has the `generate.py` script, which uses the LM Studio SDK to inference Qwen3-14b to generate the reasoning traces.
-
----
-
 ### Why Qwen3-14b?
 
 The other question we struggle with is which model to pick to generate the reasoning traces, as we can't really use humans...
