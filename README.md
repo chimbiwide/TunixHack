@@ -10,8 +10,8 @@ Code for [chimbiwide](https://huggingface.co/chimbiwide) and [KeeganC](https://h
 - ***[HuggingFace Article](https://huggingface.co/blog/chimbiwide/gemma3think)*** (more in-depth)
 - ***[SFT-base model](https://huggingface.co/chimbiwide/gemma-3-1b-it-thinking-32k-sft-base)***
 - ***[Final model](https://huggingface.co/chimbiwide/gemma-3-1b-it-thinking-32k-grpo-merged)*** (32k SFT + 28k GRPO)
-- ***[32k Dataset](https://huggingface.co/datasets/chimbiwide/think-32k)
-- ***[Collection of Indivisual Datasets](https://huggingface.co/collections/npcLM/reasoning-datasets)
+- ***[32k Dataset](https://huggingface.co/datasets/chimbiwide/think-32k)***
+- ***[Collection of Indivisual Datasets](https://huggingface.co/collections/npcLM/reasoning-datasets)***
 
 ---
 
