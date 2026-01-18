@@ -29,3 +29,15 @@ Please star/upvote if you like our work!
 
 ### Repo Strucutre
 
+```
+TunixHack/
+├── brainstorming/
+├── code/
+├── CreativeWriting/
+├── Databricks/
+├── gsm8k/
+├── notebooks/
+├── SciQA/
+├── split/
+└── summarization/
+```
