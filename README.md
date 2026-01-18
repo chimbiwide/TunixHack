@@ -41,3 +41,8 @@ TunixHack/
 ├── split/
 └── summarization/
 ```
+Most of these are dataset generation scripts using the LM Studio SDK
+
+`notebooks` includes the training notebooks for our 32k model
+
+`split` includes the scripts that split our dataset into smaller sizes (10k,20k and 32k)
