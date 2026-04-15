@@ -1,9 +1,10 @@
 # TunixHack
 > 🏆 **Official Honorable Mention from Google**
 
-Code for [chimbiwide](https://huggingface.co/chimbiwide) and [KeeganC](https://huggingface.co/KeeganC)'s [Google Tunix Hack](https://www.kaggle.com/competitions/google-tunix-hackathon/overview) hackathon submission.
+Official Repository for [chimbiwide](https://huggingface.co/chimbiwide) and [KeeganC](https://huggingface.co/KeeganC)'s [Google Tunix Hack](https://www.kaggle.com/competitions/google-tunix-hackathon/overview) hackathon submission.
 
-## 
+Our thinking dataset was used by the [first place winner](https://www.kaggle.com/competitions/google-tunix-hackathon/writeups/new-writeup-1768107128907).
+
 ---
 
 ### Quicklinks:
